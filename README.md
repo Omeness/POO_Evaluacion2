@@ -1,6 +1,6 @@
 # Evaluacion 2
 
-## :castle: jeje :castle:
+## :european_castle:
 ```
                   [\
                   |\)                                ____

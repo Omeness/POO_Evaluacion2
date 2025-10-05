@@ -10,7 +10,7 @@ class Publicacion:
         # Validaciones (ID unico, valor existente, año valido)
         if id_publicacion in type(self)._id_unico: 
             raise Exception(f"El identificador '{id_publicacion}' ya existe")
-        if not titulo: raise Exception("El atributo no puede estar vacio")
+        if not titulo.split(): raise Exception("El atributo no puede estar vacio")
         if anio < 1450: raise Exception("El año debe ser mayor o igual a 1450")
         type(self)._id_unico.add(id_publicacion)
 
@@ -34,7 +34,7 @@ class Publicacion:
 
     @titulo.setter
     def actualizar_titulo(self, nuevo_titulo):
-        if not nuevo_titulo:
+        if not nuevo_titulo.split():
             raise Exception("El nombre no puede estar vacio")
         self.__registrar_evento(f"Se actualizó el titulo de '{self.__titulo}' a '{nuevo_titulo}'")
         self.__titulo = nuevo_titulo

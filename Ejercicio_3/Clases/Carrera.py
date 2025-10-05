@@ -23,9 +23,6 @@ class Carrera(Actividad):
             f"- Duracion acumulada: {nueva_duracion} min "
             f"- Distancia actualizada: {nueva_distancia}Km"
             )
-        
-    def _registrar_historial(self, campo_modificado, valor_anterior, valor_nuevo):
-        return super()._registrar_historial(campo_modificado, valor_anterior, valor_nuevo)
     
     @property
     def ver_eventos(self):
@@ -41,6 +38,7 @@ class Carrera(Actividad):
         super().actualizar_duracion
         duracion_acumulada = super().duracion_min + nueva_duracion
         self._registrar_evento(self.distancia_km, duracion_acumulada)
+        print("Duracion actualizada con exito")
         
     @property
     def distancia_km(self):

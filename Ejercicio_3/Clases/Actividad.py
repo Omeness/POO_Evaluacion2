@@ -9,7 +9,7 @@ class Actividad:
         # Verificaciones (id unico, valor existente o positivo)
         if id_actividad in type(self)._id_unico: 
             raise Exception(f"El ID '{id_actividad}' ya existe")
-        if not nombre: raise Exception("El nombre no puede estar vacio")
+        if not nombre.split(): raise Exception("El nombre no puede estar vacio")
         if duracion_min < 1: raise Exception("La duracion debe ser mayor o igual a uno")
         type(self)._id_unico.add(id_actividad)
         
@@ -41,7 +41,7 @@ class Actividad:
     
     @nombre.setter
     def actualizar_nombre(self, nuevo_nombre):
-        if not nuevo_nombre:
+        if not nuevo_nombre.split():
             raise Exception("El nombre no puede estar vacio")
         self._registrar_historial("Nombre",self.__nombre, nuevo_nombre)
         self.__nombre = nuevo_nombre

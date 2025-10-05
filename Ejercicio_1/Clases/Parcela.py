@@ -5,11 +5,12 @@ class Parcela:
     _id_unico = set()
 
     def __init__(self, id_parcela, superficie_ha, cultivo_actual:str, estado="activa"):
+        
         # Validaciones (id unico, valores positivos o existentes)
         if id_parcela in type(self)._id_unico: 
             raise Exception(f"El ID '{id_parcela}' ya existe")
         if superficie_ha <= 0: raise Exception("La superficie debe ser mayor a cero")
-        if not cultivo_actual: raise Exception("El atributo no puede estar vacio")
+        if not cultivo_actual.split(): raise Exception("El atributo no puede estar vacio")
         type(self)._id_unico.add(id_parcela)
         
         self.id_parcela = id_parcela
@@ -46,7 +47,7 @@ class Parcela:
     def actualizar_cultivo(self, nuevo_cultivo):
         if self.estado == "inactiva":
             raise Exception("No se puede actualizar un cultivo inactivo")
-        if  not nuevo_cultivo:
+        if  not nuevo_cultivo.split():
             raise Exception("Se debe especificar el tipo de cultivo")
         detalle = f"Se ha actualizado el cultivo '{self.cultivo_actual}' a '{nuevo_cultivo}'"
         self._registrar_evento("Actualizacion cultivo", detalle)

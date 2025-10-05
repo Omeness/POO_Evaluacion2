@@ -6,7 +6,7 @@ class CuerpoCeleste:
     _id_celeste = 10
 
     def __init__(self, nombre:str, masa_kg):
-        if not nombre: raise Exception("El nombre no puede estar vacio")
+        if not nombre.split(): raise Exception("El nombre no puede estar vacio")
         if masa_kg <= 0: raise Exception("La masa debe ser un valor mayor a cero")
 
         self.id_celeste = type(self)._id_celeste
@@ -36,7 +36,7 @@ class CuerpoCeleste:
     
     @nombre.setter
     def actualizar_nombre(self, nuevo_nombre):
-        if not nuevo_nombre:
+        if not nuevo_nombre.split():
             raise Exception("El nuevo nombre no puede estar vacio")
         self._registrar_historial("Nombre", self.__nombre, nuevo_nombre)
         print(f"Nombre actualizado de '{self.__nombre}' a '{nuevo_nombre}'")

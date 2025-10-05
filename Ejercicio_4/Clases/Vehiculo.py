@@ -2,10 +2,6 @@ from datetime import datetime
 import re
 
 
-# Datos derivados/reportables
-# • Fecha de último pesaje/actualización.
-# • Conteo de cambios de estado (habilitado/inhabilitado).
-
 class Vehiculo():
     _id_vehiculo = set()
 
@@ -39,12 +35,6 @@ class Vehiculo():
     @property
     def patente(self):
         return self.__patente
-    
-    # No tiene ningun sentido hacer un setter que no se va a usar pero estoy probando algo
-    # TODO borrar despues 
-    @patente.setter
-    def patente(self):
-        raise Exception("QUE NO SE PUEDE MODIFICAR LE DICEN")
     
     @property
     def peso_kg(self):

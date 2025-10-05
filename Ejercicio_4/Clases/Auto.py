@@ -1,12 +1,7 @@
 from datetime import datetime
 from Ejercicio_4.Clases.Vehiculo import Vehiculo
 
-"""
-Este dato derivado: 'Número de eventos de subida/bajada en un rango de fechas.'
-No supe como implementarlo, pero tenia pensado hacer un contador y una lista que
-solo almacenara los eventos de subida y bajada, pero siento que quizas iba a ser mucho
 
-"""
 class Auto(Vehiculo):
     def __init__(self, id_vehiculo, patente, peso_kg, asientos_totales, 
                  ocupantes_actuales, sistema_retencion_infantil, estado="habilitado"):

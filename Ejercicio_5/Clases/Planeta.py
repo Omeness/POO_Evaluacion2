@@ -22,6 +22,7 @@ class Planeta(CuerpoCeleste):
         super()._registrar_historial("Radio", self.__radio_km, nuevo_radio)
         print(f"Radio actualizado de {self.radio_km} km a {nuevo_radio} km")
         self.__radio_km = nuevo_radio
+        self._conteo_modificaciones += 1
 
     @property
     def distancia_sol_km(self):
@@ -34,6 +35,7 @@ class Planeta(CuerpoCeleste):
         super()._registrar_historial("Radio", self.__distancia_sol_km, nueva_distancia)
         print(f"Distancia actualizada de {self.distancia_sol_km} km a {nueva_distancia} km")
         self.__distancia_sol_km = nueva_distancia
+        self._conteo_modificaciones += 1
 
     def calcular_densidad(self):
         volumen = (4/3) * pi * (self.__radio_km ** 3)

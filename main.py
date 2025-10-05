@@ -27,7 +27,7 @@ parcela1.rectificar_superficie(15.40, "crecio el terreno")
 print()
 parcela1.historial_eventos
 
-    # Probar con valores invalidos
+# Probar con valores invalidos
 # Creamos varias parcelas para corroborar que funciona el verificador de ID
 p1 = Parcela(20, 10.50, "Trigo", "activa")
 p2 = Parcela(12, 10.50, "Maiz", "activa")
@@ -40,7 +40,7 @@ try:
 except Exception as e:
     print("Error:", e)
 
-# No se como "asociar" asi que hice otro objeto :|
+# No se como "asociar" asi que hice otro objeto :| no se si se referia a eso jjj
 parcela2 = ParcelaConRiego(11, 10.50, "Maiz", 0, 1500, 2000)
 
 print("\n### Nuevos registros y visualizarcion")
@@ -64,13 +64,25 @@ parcela2.regar_automatico("parcial")
 print()
 parcela2.eventos_riego
 
-print("\n### litros disponibles solo se puede modificar a traves de cargar_agua")
+print("\n### Realizamos mas cambios para ver que dejen registro")
+parcela2.configurar_tasa(2000)
+parcela2.configurar_umbral(1000)
+parcela2.habilitar_riego()
+parcela2.inhabilitar_riego()
+parcela2.habilitar_riego()
+parcela2.regar_automatico("parcial")
+print()
+parcela2.historial_eventos
+print()
+parcela2.eventos_riego
+
+print("\n### Litros disponibles solo se puede modificar a traves de cargar_agua")
 try:
     parcela2.litros_disponibles = -11
 except Exception as e:
     print("Error:", e)
 
-# carga de agua con valor invalido
+print("\n### Carga de agua con valor invalido")
 try:
     parcela2.cargar_agua = 0
 except Exception as e:
@@ -91,7 +103,7 @@ except Exception as e:
 print("\n### Creamos un libro, leemos y consultamos prograso")
 publicacion2 = Libro(11, "Cien años de soledad", 1990, 500)
 publicacion2.leer(120)
-print(publicacion2.consultar_progreso())
+publicacion2.consultar_progreso()
 
 print("\n### Intentamos leer mas paginas de las que hay")
 publicacion2.leer(400)
@@ -112,6 +124,17 @@ try:
     publicacion2.paginas_totales = 10
 except Exception as e:
     print("Error:", e)
+
+print("\n### Creamos otro libro y leemos varias paginas, revisamos registro")
+lib1 = Libro(12, "Biblia", 1990, 1500)
+lib1.leer(20)
+lib1.leer(150)
+lib1.leer(200)
+lib1.leer(550)
+lib1.leer(348)
+print()
+lib1.evento_lectura
+lib1.consultar_progreso()
 
 
 print("\n----------------- EJERCICIO 3 -----------------\n")
@@ -192,9 +215,10 @@ try:
 except Exception as e:
     print("Error:", e)
 
-print("\n### Subimos personas e intentamos subir mas de la capacidad")
+print("\n### Subimos personas, consultamos ocupacion e intentamos subir mas de la capacidad")
 auto1.subir_personas(3)
-
+print()
+auto1.consultar_ocupacion()
 try:
     auto1.subir_personas(3)
 except Exception as e:
@@ -219,9 +243,15 @@ except Exception as e:
 print("\n### Vaciamos el auto y vemos el historial")
 auto1.vaciar_auto("fin del turno")
 print()
-auto1.ver_historial()
-print()
 auto1.ver_eventos()
+print("\n### Hacemos un par de cambios y revisamos la ficha")
+auto1.inhabilitar("test")
+auto1.habilitar("test")
+auto1.inhabilitar("test")
+auto1.habilitar("test")
+auto1.consultar_ficha()
+print()
+auto1.ver_historial()
 
 
 print("\n----------------- EJERCICIO 5 -----------------\n")
@@ -235,7 +265,7 @@ print("\n### Calculamos densidad del planeta y comparamos distancias con otro")
 pl1.calcular_densidad()
 pl1.comparar_distancia(pl2)
 
-print("\n### Actualizamos datos y la ficha")
+print("\n### Actualizamos datos y consultamos ficha")
 pl1.actualizar_distacia_sol = 5900000000
 pl1.actualizar_masa = 1.3*10e22
 pl1.actualizar_radio = 1188
@@ -259,3 +289,44 @@ try:
     pl1.masa_kg = 10
 except Exception as e:
     print("Error:", e)
+
+print("\n### Validacion ID")
+# Primero creamos varios objetos.
+cuerpo1 = CuerpoCeleste("ejemplo1", 10)
+cuerpo2 = CuerpoCeleste("ejemplo2", 10)
+cuerpo3 = CuerpoCeleste("ejemplo3", 10)
+cuerpo4 = CuerpoCeleste("ejemplo4", 10)
+planeta1 = Planeta("ejemplo5", 10, 10, 10)
+planeta2 = Planeta("ejemplo6", 10, 10, 10)
+planeta3 = Planeta("ejemplo7", 10, 10, 10)
+
+print("### Aqui visualizamos que los ID se han ido generando de manera esperada")
+print(cuerpo1.id_celeste)
+print(cuerpo2.id_celeste)
+print(cuerpo3.id_celeste)
+print(cuerpo4.id_celeste)
+print(planeta1.id_celeste)
+print(planeta2.id_celeste)
+print(planeta3.id_celeste)
+
+print("\n----------------- Fin ejercicios -----------------\n")
+print("Solo si quiere verificar que las fechas se estan almacenando correctamente, descomente la siguiente seccion:")
+
+# Esta parte tiene cero logica, solo es para revisar jj
+
+
+# import os
+# if os.name == 'nt': os.system('cls') 
+# else: os.system('clear')
+
+# print("-- Creamos la clase y le cambiamos el nombre --\n")
+# while True:
+#     test = Carrera(33, "test", 10, 10)
+#     test.actualizar_nombre = "test1"
+#     input("Espere un poco y Enter\n")
+#     test.actualizar_nombre = "test2"
+#     input("Enter para continuar\n")
+#     test.actualizar_nombre = "test"
+#     input("Enter para ver ficha\n")
+#     test.ver_historial
+#     break

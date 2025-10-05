@@ -45,4 +45,4 @@ class Libro(Publicacion):
             print(f"Error: Las paginas a leer ({paginas}) superan las paginas restantes ({paginas_restantes})")
 
     def consultar_progreso(self):
-        return f"Porcentaje de lectura: {self.__paginas_leidas / self.__paginas_totales * 100:.1f}%"
+        print(f"Porcentaje de lectura: {self.__paginas_leidas / self.__paginas_totales * 100:.1f}%")

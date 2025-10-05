@@ -151,7 +151,7 @@ except Exception as e:
 
 # Sin nombre
 try:
-    act2 = Actividad(12, "", 12)
+    act2 = Actividad(12, "  ", 12)
 except Exception as e:
     print("Error:", e)
 
